@@ -1,99 +1,60 @@
-# README - Conversor de Imágenes
+# README - Conversor de Imágenes (Femverter)
 
-## 📌 Descripción
+## Descripción
 
-Este es un programa en Python con interfaz gráfica que permite convertir múltiples imágenes a un formato específico. La aplicación soporta arrastrar y soltar archivos, selección manual de imágenes y conversión a varios formatos populares.
+Programa en Python con interfaz gráfica (pywebview) que convierte múltiples imágenes entre formatos. Soporta arrastrar y soltar, selección manual y conversión a varios formatos populares.
 
-## 🛠️ Características principales
+## Características
 
-- Interfaz gráfica intuitiva basada en PyQt5
-- Soporte para arrastrar y soltar imágenes
-- Conversión a múltiples formatos (PNG, JPEG, WEBP, BMP, GIF, TIFF)
-- Visualización de la lista de imágenes seleccionadas
-- Selección de carpeta de destino para las imágenes convertidas
-- Mensajes de retroalimentación durante el proceso
+- Interfaz basada en HTML+CSS+JS con pywebview
+- Arrastrar y soltar imágenes (compatible con WebView2 y CEF)
+- Conversión a PNG, JPEG, WEBP, BMP, GIF, TIFF
+- Lista de imágenes seleccionadas
+- Selección de carpeta de destino
+- Mensajes de retroalimentación
 
-## 📦 Dependencias
+## Dependencias
 
-El programa requiere las siguientes bibliotecas de Python:
-
-- PyQt5 (para la interfaz gráfica)
-- Pillow (para el procesamiento de imágenes)
-
-Puedes instalarlas con:
+- pywebview (interfaz nativa con WebView2/CEF)
+- Pillow (procesamiento de imágenes)
 
 ```bash
-pip install PyQt5 pillow
+pip install -r requirements.txt
 ```
 
-## 🏗️ Estructura del código
+## Estructura del proyecto
 
-### Componentes principales
+```
+Femverter/
+├── app.py                  # Punto de entrada
+├── api/
+│   └── converter_api.py    # API bridge expuesta a JavaScript
+├── gui/
+│   ├── index.html          # Cuerpo de la interfaz
+│   ├── style.css           # Estilos
+│   └── script.js           # Lógica del cliente (drag & drop, UI)
+├── src/
+│   ├── image_utils.py      # Validación de extensiones
+│   └── converter.py        # Conversión con Pillow
+└── requirements.txt
+```
 
-1. **Clase `ImageConverterApp` (QMainWindow)**
+## Formatos soportados
 
-   - Clase principal que hereda de QMainWindow
-   - Contiene toda la lógica de la interfaz y conversión
+| Entrada                              | Salida                          |
+| ------------------------------------ | ------------------------------- |
+| PNG, JPG, JPEG, BMP, GIF, TIFF, WEBP | PNG, JPEG, WEBP, BMP, GIF, TIFF |
 
-2. **Métodos principales**
-
-   - `init_ui()`: Configura los elementos de la interfaz
-   - `dragEnterEvent()` y `dropEvent()`: Manejan el arrastrar y soltar
-   - `is_image_file()`: Verifica si un archivo es una imagen válida
-   - `set_output_format()`: Establece el formato de salida
-   - `select_images()`: Abre el diálogo para seleccionar imágenes
-   - `convert_images()`: Realiza la conversión de formatos
-   - `clear_list()`: Limpia la lista de imágenes seleccionadas
-
-3. **Widgets de la interfaz**
-   - `QLabel`: Área para arrastrar y soltar imágenes
-   - `QListWidget`: Muestra la lista de imágenes seleccionadas
-   - `QComboBox`: Selector de formato de salida
-   - `QPushButton`: Botones para seleccionar, convertir y limpiar
-
-## 🖼️ Formatos soportados
-
-### Formatos de entrada:
-
-- PNG (.png)
-- JPEG (.jpg, .jpeg)
-- WEBP (.webp)
-- BMP (.bmp)
-- GIF (.gif)
-- TIFF (.tiff)
-
-### Formatos de salida:
-
-- PNG
-- JPEG
-- WEBP
-- BMP
-- GIF
-- TIFF
-
-## 🚀 Cómo ejecutar el programa
-
-1. Clona o descarga el repositorio
-2. Instala las dependencias con `pip install -r requirements.txt`
-3. Ejecuta el archivo principal:
+## Cómo ejecutar
 
 ```bash
-python image_converter.py
+python app.py
 ```
 
-## 📝 Licencia
+## Licencia
 
-Este proyecto está bajo la licencia MIT. Siéntete libre de modificarlo y distribuirlo según tus necesidades.
-
-## 💡 Mejoras posibles
-
-Algunas características que podrían añadirse:
-
-- Opción para redimensionar imágenes durante la conversión
-- Ajuste de calidad para formatos como JPEG
-- Procesamiento por lotes con diferentes configuraciones
-- Previsualización de imágenes antes de la conversión
+MIT. Siéntete libre de modificarlo y distribuirlo.
 
 ---
 
-Desarrollado con ❤️ usando Python, PyQt5 y Pillow. ¡Espero que te sea útil!
+Desarrollado con Python, pywebview y Pillow.

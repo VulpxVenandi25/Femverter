@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Femverter - Conversor de Imágenes</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <h1>Conversor de Imágenes</h1>
+
+      <div id="drop-zone" class="drop-zone">
+        <p>Arrastra y suelta imágenes aquí</p>
+        <span class="or">o</span>
+      </div>
+
+      <ul id="file-list"></ul>
+
+      <div class="controls">
+        <label for="format-select">Formato de salida:</label>
+        <select id="format-select">
+          <option value="PNG">PNG</option>
+          <option value="JPEG">JPEG</option>
+          <option value="WEBP">WEBP</option>
+          <option value="BMP">BMP</option>
+          <option value="GIF">GIF</option>
+          <option value="TIFF">TIFF</option>
+        </select>
+      </div>
+
+      <div class="buttons">
+        <button id="btn-select">Seleccionar imágenes</button>
+        <button id="btn-convert" class="primary">Convertir imágenes</button>
+        <button id="btn-clear" class="danger">Limpiar lista</button>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
